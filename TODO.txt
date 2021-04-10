@@ -1,12 +1,9 @@
+update Modal logic
+
 update package.json
-	npm i @keystone-next/fields-document
-	npm i slate
-	npm i @keystone-next/document-renderer
-	npm i escape-html
 	npm i @tippyjs/react
 	npm i react-scroll
 
-connect proxima font
 create components
 	Form
 	User
