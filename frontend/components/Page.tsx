@@ -45,22 +45,22 @@ const GlobalStyles = createGlobalStyle`
   .animation-link {
     text-decoration: none;
     position: relative;
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        content: '';
+        display: block;
+        height: 3px;
+        width: 0;
+        transform: translateX(-50%);
+        background-color: #000;
+        transition: 0.2s ease-in-out;
+    }
+    &:hover::after {
+        width: 100%;
+    }
   }
-  .animation-link::after {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      content: '';
-      display: block;
-      height: 3px;
-      width: 0;
-      transform: translateX(-50%);
-      background-color: #000;
-      transition: 0.2s ease-in-out;
-   }
-   .animation-link:hover::after {
-      width: 100%;
-   }
   button {
     outline: none;
   }

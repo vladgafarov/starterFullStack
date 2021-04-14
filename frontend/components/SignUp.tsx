@@ -2,7 +2,6 @@ import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import useForm from '../lib/useForm'
 import DisplayError from './ErrorMessage'
-import { gradient } from './Page'
 import Button from './styles/Button'
 import Form from './styles/Form'
 
@@ -20,7 +19,7 @@ const SIGNUP_MUTATION = gql`
    }
 `
 
-const SignUp = ({ children }) => {
+const SignUp = ({ setType }) => {
    const { inputs, handleChange, resetForm } = useForm({
       name: '',
       email: '',
@@ -78,11 +77,17 @@ const SignUp = ({ children }) => {
                   required
                />
             </label>
-            <Button type="submit" className={gradient}>
+            <Button type="submit" isGradient>
                Sign Up
             </Button>
          </fieldset>
-         {children && <div className="children">{children}</div>}
+         <div className="bottom">
+            <span>OR</span>
+            <br />
+            <span className="link" onClick={() => setType('signIn')}>
+               Sign In
+            </span>
+         </div>
       </Form>
    )
 }

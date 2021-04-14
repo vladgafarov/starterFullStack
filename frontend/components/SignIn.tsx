@@ -1,10 +1,7 @@
 import { gql, useMutation } from '@apollo/client'
-import Router from 'next/router'
-import wait from 'waait'
 import { useModal } from '../lib/modalState'
 import useForm from '../lib/useForm'
 import DisplayError from './ErrorMessage'
-import { gradient } from './Page'
 import Button from './styles/Button'
 import Form from './styles/Form'
 import { CURRENT_USER_QUERY, useUser } from './User'
@@ -27,13 +24,11 @@ const SIGNIN_MUTATION = gql`
    }
 `
 
-const SignIn = ({ children }) => {
+const SignIn = ({ setType }) => {
    const { inputs, handleChange, resetForm } = useForm({
       email: '',
       password: '',
    })
-
-   const { closeModal } = useModal()
 
    const { data: userData } = useUser()
    const user = userData?.authenticatedItem
@@ -82,10 +77,18 @@ const SignIn = ({ children }) => {
                   type="password"
                   name="password"
                   placeholder="Your password"
+                  required
                />
             </label>
+            <Button isGradient>Sign In</Button>
          </fieldset>
-         {children && <div className="children">{children}</div>}
+         <div className="bottom">
+            <span>OR</span>
+            <br />
+            <span className="link" onClick={() => setType('signUp')}>
+               Sign Up
+            </span>
+         </div>
       </Form>
    )
 }
